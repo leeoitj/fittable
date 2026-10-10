@@ -29,7 +29,7 @@ JSON 객체만 반환하세요. 형식:
 {"foods":[{"name":"음식명","portion":"추정량","calories":숫자,"protein":숫자,"carbs":숫자,"fat":숫자}],"total":{"calories":숫자,"protein":숫자,"carbs":숫자,"fat":숫자},"summary":"분석 설명과 불확실성","recommendations":["추천 1","추천 2","추천 3"]}
 영양 수치는 사진 기반 추정치임을 명시하고, 수치는 0 이상의 숫자로 작성하세요.`;
     const response = await ai.models.generateContent({
-      model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+      model: process.env.GEMINI_MODEL || "gemini-3.8-flash",
       contents: [
         { inlineData: { mimeType: req.file.mimetype, data: req.file.buffer.toString("base64") } },
         { text: prompt }
