@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitTable — 나에게 맞는 식단 코치</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css"></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="#"><span class="mark">F</span> FitTable<span class="dot">.</span></a>
+<p class="eyebrow">YOUR SPACE</p><nav><a class="active" href="#dashboard">▦ 대시보드</a><a href="#upload">＋ 식단 기록</a><a href="#recommend">✳ 맞춤 추천</a></nav>
+<div class="side-bottom"><div class="coach"><span>✦</span><h3>작은 선택이<br>큰 변화를 만들어요.</h3><p>오늘도 목표에 한 걸음 가까이.</p></div><small>FITTABLE · PERSONAL NUTRITION</small></div></aside>
+<main id="dashboard">
+<header class="top"><div><span class="eyebrow">YOUR DAILY NUTRITION</span><h1>오늘의 식단, <em>잘하고 있어요.</em></h1><p>기록할수록 내 몸에 맞는 선택이 선명해져요.</p></div><span class="date" id="date">오늘</span></header>
+<section class="goal"><div><span class="eyebrow">MY CURRENT GOAL</span><h2>어떤 목표를 향해 가고 있나요?</h2><p>목표를 선택하면 식단 추천 기준이 달라져요.</p></div>
+<div class="goals"><button data-goal="다이어트"><b>↘</b><span><strong>다이어트</strong><small>체지방 감량</small></span></button><button data-goal="벌크업"><b>↗</b><span><strong>벌크업</strong><small>근육량 증가</small></span></button><button class="selected" data-goal="린매스업"><b>✦</b><span><strong>린매스업</strong><small>근육은 늘리고 지방은 최소화</small></span></button></div></section>
+<section class="stats">
+<article class="stat"><label>오늘 섭취 칼로리</label><div><strong id="calories">0</strong> <small>kcal</small></div><progress id="calories-bar" max="100" value="0"></progress><footer>목표 <b id="calories-target">2,200</b> kcal <span id="calories-left">2,200 남음</span></footer></article>
+<article class="stat"><label>단백질</label><div><strong id="protein">0</strong> <small>g</small></div><progress class="p" id="protein-bar" max="100" value="0"></progress><footer>목표 <b id="protein-target">140</b> g <span id="protein-left">140g 남음</span></footer></article>
+<article class="stat"><label>탄수화물</label><div><strong id="carbs">0</strong> <small>g</small></div><progress class="c" id="carbs-bar" max="100" value="0"></progress><footer>목표 <b id="carbs-target">250</b> g <span id="carbs-left">250g 남음</span></footer></article>
+<article class="stat"><label>지방</label><div><strong id="fat">0</strong> <small>g</small></div><progress class="f" id="fat-bar" max="100" value="0"></progress><footer>목표 <b id="fat-target">65</b> g <span id="fat-left">65g 남음</span></footer></article>
+</section>
+<div class="columns">
+<section class="panel" id="upload"><div class="heading"><div><span class="eyebrow">MEAL JOURNAL</span><h2>오늘 먹은 식단 기록하기</h2><p>사진을 올리면 AI가 영양 정보를 분석해요.</p></div><span class="tag">TODAY</span></div>
+<div class="tabs"><button class="chosen" data-meal="아침">☀ 아침</button><button data-meal="점심">◒ 점심</button><button data-meal="저녁">☾ 저녁</button><button data-meal="간식">＋ 간식</button></div>
+<form id="form"><label class="drop" id="drop" for="photo"><input id="photo" type="file" accept="image/jpeg,image/png,image/webp" hidden><img id="preview" hidden><span id="upload-icon">↑</span><strong id="upload-title">사진을 여기에 올려주세요</strong><small id="upload-sub">클릭해서 선택하거나 파일을 끌어다 놓으세요</small><small>JPG, PNG, WEBP · 최대 8MB</small></label>
+<label class="notes-label" for="notes">추가 메모 <small>선택</small></label><input id="notes" class="notes" placeholder="예: 밥은 반 공기, 소스는 조금만 먹었어요">
+<button class="primary" id="analyze" type="submit">✦ AI 영양 분석하기 <span>→</span></button><p id="message" role="status"></p></form>
+<div id="result" hidden><hr><h3>✓ 분석 결과 <small>사진 기반 추정치</small></h3><div class="macros" id="macros"></div><div id="foods"></div><p id="summary"></p><div class="tips" id="tips"></div><button class="secondary" id="add">오늘 섭취량에 기록하기</button></div>
+</section>
+<section class="panel"><div class="heading"><div><span class="eyebrow">DAILY LOG</span><h2>오늘의 식사</h2><p>기록한 식사를 한눈에 확인해요.</p></div><span class="tag" id="count">0 / 4</span></div><div id="logs" class="logs"><div class="empty"><span>♡</span><b>아직 기록한 식사가 없어요</b><p>첫 식단 사진을 올려 오늘의 기록을 시작해 보세요.</p></div></div><div class="coach-note"><b>✦ FitTable 코치의 한마디</b><p id="coach-text">식단을 기록하면 오늘 목표에 맞는 팁을 알려드릴게요.</p></div></section>
+</div>
+<section class="panel recommendations" id="recommend"><div class="heading"><div><span class="eyebrow">SMART SUGGESTIONS</span><h2>오늘의 맞춤 추천</h2><p>선택한 목표에 맞춘 식사 아이디어예요.</p></div><span class="big-star">✳</span></div><div id="recommendations" class="recommendations-grid"></div>
+<div class="restaurant"><span>⌖</span><div><b>오늘 외식할 예정인가요?</b><p>목표에 맞는 외식 메뉴를 골라보세요.</p></div><button id="restaurant-button">외식 메뉴 가이드 보기 →</button></div><div id="restaurant-guide" hidden></div></section>
+<footer>FitTable · 내 몸에 맞는 식단을, 더 쉽게.<small>영양 정보는 추정치이며 의료적 조언을 대신하지 않습니다.</small></footer>
+</main></div><script src="/app.js"></script></body></html>

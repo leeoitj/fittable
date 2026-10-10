@@ -1,0 +1,23 @@
+{
+  "name": "fittable",
+  "version": "1.0.0",
+  "description": "AI 식단 분석 및 목표별 영양 코치",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "nutrition",
+    "fitness",
+    "gemini"
+  ],
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^2.28.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.3.0",
+    "multer": "^2.4.0"
+  }
+}
